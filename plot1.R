@@ -10,7 +10,7 @@ plot1  <-function() {
   hist(as.numeric(dt$Global_active_power)/1000,
        xlab="Global Active Power (kilowatts)", 
        main="Global Active Power", col="red",
-       xlim = c(0,6),ylim=c(0,1200))
+       )
   dev.copy(png,filename="plot1.png");
   dev.off ();
 }
