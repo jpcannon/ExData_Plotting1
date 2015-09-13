@@ -10,7 +10,7 @@ plot3  <-function() {
   dt["Date"] <- as.Date(dt$Date,format="%d/%m/%Y")
   dt <- dt[dt$Date >= "2007-02-01" & dt$Date <= "2007-02-02", ]
   dt["Time"]<- times(dt$Time)
-
+  dt<-complete.cases(dt)
   plot(wday(dt$Date)+dt$Time,
        as.numeric(dt$Sub_metering_1),
        type='l',ylab="Energy sub metering",
@@ -18,6 +18,8 @@ plot3  <-function() {
   lines(as.numeric(dt$Sub_metering_2),col="red")
   lines(as.numeric(dt$Sub_metering_3),col="blue")
   axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
+  legend('topright', c("Sub_metering_1","Sub_metering_2","Sub_metering_3") , 
+  lty=1, col=c('Black', 'red', 'blue'), cex=.75)
   dev.copy(png,filename="ExData_Plotting1\\plot3.png");
   dev.off ();
 }
