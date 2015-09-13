@@ -11,6 +11,6 @@ plot1  <-function() {
        xlab="Global Active Power (kilowatts)", 
        main="Global Active Power", col="red",
        )
-  dev.copy(png,filename="plot1.png");
+  dev.copy(png,filename="ExData_Plotting1\\plot1.png");
   dev.off ();
 }
