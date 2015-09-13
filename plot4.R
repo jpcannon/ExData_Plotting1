@@ -25,6 +25,8 @@ plot4  <-function() {
   lines(as.numeric(dt$Sub_metering_2),col="red")
   lines(as.numeric(dt$Sub_metering_3),col="blue")
   axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
+  legend('topright', c("Sub_metering_1","Sub_metering_2","Sub_metering_3") , 
+         lty=1, col=c('Black', 'red', 'blue'),cex=0.4, )
   
   plot(wday(dt$Date)+dt$Time,
        as.numeric(dt$Voltage),
