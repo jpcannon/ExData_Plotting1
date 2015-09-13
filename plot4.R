@@ -22,8 +22,8 @@ plot4  <-function() {
        as.numeric(dt$Sub_metering_1),
        type='l',ylab="Energy sub metering",
        xlab = "",xaxt = "n")
-  lines(as.numeric(dt$Sub_metering_2),col="red")
-  lines(as.numeric(dt$Sub_metering_3),col="blue")
+  lines(wday(dt$Date)+dt$Time,as.numeric(dt$Sub_metering_2),col="red")
+  lines(wday(dt$Date)+dt$Time,as.numeric(dt$Sub_metering_3),col="blue")
   axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
   legend('topright', c("Sub_metering_1","Sub_metering_2","Sub_metering_3") , 
          lty=1, col=c('Black', 'red', 'blue'),cex=0.4, )
