@@ -10,6 +10,13 @@ plot4  <-function() {
   dt["Date"] <- as.Date(dt$Date,format="%d/%m/%Y")
   dt <- dt[dt$Date >= "2007-02-01" & dt$Date <= "2007-02-02", ]
   dt["Time"]<- times(dt$Time)
+  par(mfcol =c(2,2))
+   
+  plot(wday(dt$Date)+dt$Time,
+      as.numeric(dt$Global_active_power),
+      type='l',ylab="Global Active Power(kilowatts)",
+      xlab = "",xaxt = "n")
+  axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
 
   plot(wday(dt$Date)+dt$Time,
        as.numeric(dt$Sub_metering_1),
@@ -18,6 +25,20 @@ plot4  <-function() {
   lines(as.numeric(dt$Sub_metering_2),col="red")
   lines(as.numeric(dt$Sub_metering_3),col="blue")
   axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
-  dev.copy(png,filename="ExData_Plotting1\\plot4.png");
-  dev.off ();
+  
+  plot(wday(dt$Date)+dt$Time,
+       as.numeric(dt$Voltage),
+       type='l',ylab="Voltage", xlab="datetime",
+       xaxt = "n")
+  axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
+  
+  plot(wday(dt$Date)+dt$Time,
+       as.numeric(dt$Global_reactive_power),
+       type='l',ylab="Global_reactive_power" ,
+       xlab="datetime",
+       xaxt = "n")
+  axis(1, at=5:7, labels=c("Thur","Fri","Sat"))
+  
+  dev.copy(png,filename="ExData_Plotting1\\plot4.png")
+  dev.off ()
 }
